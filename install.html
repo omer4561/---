@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>הנחיות התקנה - Video Summarizer</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #333;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      padding: 20px;
+      color: white;
+      text-align: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 5px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .guide {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 40px;
+    }
+
+    .guide-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .guide-header h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+
+    .guide-content {
+      padding: 40px;
+    }
+
+    .step-item {
+      margin-bottom: 40px;
+      padding-bottom: 40px;
+      border-bottom: 1px solid #eee;
+    }
+
+    .step-item:last-child {
+      border-bottom: none;
+    }
+
+    .step-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
+    }
+
+    .step-number {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .step-header h3 {
+      color: #667eea;
+      font-size: 20px;
+    }
+
+    .step-content {
+      margin-left: 65px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    .step-content p {
+      margin-bottom: 10px;
+    }
+
+    .code-block {
+      background: #f5f5f5;
+      border-right: 4px solid #667eea;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      overflow-x: auto;
+    }
+
+    .highlight {
+      background: #fff3cd;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+      border-right: 4px solid #ffc107;
+    }
+
+    .success {
+      background: #d4edda;
+      padding: 15px;
+      border-radius: 6px;
+      margin: 15px 0;
+      border-right: 4px solid #28a745;
+      color: #155724;
+    }
+
+    .faq {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+    }
+
+    .faq-header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .faq-content {
+      padding: 40px;
+    }
+
+    .faq-item {
+      margin-bottom: 30px;
+    }
+
+    .faq-question {
+      color: #667eea;
+      font-weight: 600;
+      font-size: 16px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
+
+    .faq-answer {
+      color: #666;
+      line-height: 1.8;
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s;
+      margin-top: 20px;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.2);
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 80px;
+    }
+
+    @media (max-width: 768px) {
+      .guide-content {
+        padding: 20px;
+      }
+
+      .step-header {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .step-content {
+        margin-left: 0;
+        margin-top: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>🎬 הנחיות התקנה - Video Summarizer</h1>
+    <p>מדריך שלב אחר שלב להתקנה וקונפיגורציה</p>
+  </header>
+
+  <div class="container">
+    <!-- Installation Guide -->
+    <div class="guide">
+      <div class="guide-header">
+        <h2>📥 שלבי התקנה</h2>
+        <p>עקוב אחרי השלבים הבאים בסדר</p>
+      </div>
+
+      <div class="guide-content">
+        <!-- Step 1 -->
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-number">1</div>
+            <h3>הורדת התוסף</h3>
+          </div>
+          <div class="step-content">
+            <p>לחץ על כפתור "הורד עכשיו" בעמוד הבית וקבל את קובץ ה-ZIP</p>
+            <div class="code-block">
+              youtube-summarizer.zip (גודל: ~500KB)
+            </div>
+            <p>חלץ את הקובץ לתיקייה בחרת, למשל:</p>
+            <div class="code-block">
+              C:\Extensions\youtube-summarizer\
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-number">2</div>
+            <h3>פתח את Chrome Extensions Page</h3>
+          </div>
+          <div class="step-content">
+            <p>בכרום, הקלד בשורת הכתובות:</p>
+            <div class="code-block">
+              chrome://extensions/
+            </div>
+            <p>או בחר: ☰ (תפריט) → סכום כלים נוספים → הרחבות</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-number">3</div>
+            <h3>הפעל Developer Mode</h3>
+          </div>
+          <div class="step-content">
+            <p>בפינה <strong>עליונה ימנית</strong> של עמוד ההרחבות:</p>
+            <div class="highlight">
+              ⚙️ סמל מצב מפתח - הפוך אותו ON (כחול)
+            </div>
+            <p>כעת אתה רואה כפתור "Load unpacked"</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-number">4</div>
+            <h3>Load Unpacked</h3>
+          </div>
+          <div class="step-content">
+            <p>לחץ על "Load unpacked" ובחר את התיקייה שלך (שם חלצת את קובץ ה-ZIP)</p>
+            <div class="success">
+              ✅ התוסף הוטען בהצלחה!
+            </div>
+            <p>תראה את התוסף רשום בעמוד ההרחבות עם שם "Video Summarizer & Translator"</p>
+          </div>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-number">5</div>
+            <h3>Setup Wizard (הגדרה אוטומטית)</h3>
+          </div>
+          <div class="step-content">
+            <p>אחרי טעינת התוסף, דף Setup יפתח אוטומטית 🎉</p>
+            <p><strong>בדף Setup:</strong></p>
+            <ul style="margin-right: 20px;">
+              <li>✓ שלב 1: לחץ ע"מ להרשם ל-Claude (בחינם)</li>
+              <li>✓ שלב 2: לחץ ע"מ להרשם ל-EmailJS (בחינם)</li>
+              <li>✓ שלב 3: הזן את כתובת הדוא"ל שלך</li>
+              <li>✓ שלב 4: בחר שפה</li>
+            </ul>
+            <div class="success">
+              ✅ זהו! אתה מוכן להשתמש!
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="step-item">
+          <div class="step-header">
+            <div class="step-number">6</div>
+            <h3>התחל להשתמש!</h3>
+          </div>
+          <div class="step-content">
+            <p>1. פתח סרטון YouTube (או Udemy, Coursera, וכו')</p>
+            <p>2. לחץ על אייקון התוסף בשורת הכלים</p>
+            <p>3. לחץ "סכם ושלח"</p>
+            <p>4. חכה 30-60 שניות</p>
+            <p>5. 📧 בדוק את המייל - הסיכום הגיע!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="faq">
+      <div class="faq-header">
+        <h2>❓ שאלות נפוצות</h2>
+      </div>
+
+      <div class="faq-content">
+        <div class="faq-item">
+          <div class="faq-question">Q: איפה מקום הקבצים?</div>
+          <div class="faq-answer">
+            כשחלצת את ה-ZIP, בחר תיקייה שתזכור, למשל:
+            <div class="code-block">
+              C:\Users\YourName\Downloads\youtube-summarizer
+            </div>
+            זה זה המקום ש"Load unpacked" צריך להצביע עליו.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q: אני לא רואה את אייקון התוסף</div>
+          <div class="faq-answer">
+            1. בדוק שהתוסף טעון בכרום (chrome://extensions/) ✓
+            <br>2. אם תוסף מוגבל - לחץ על 🧩 (puzzle) בפינה ימנית עליונה
+            <br>3. חפש "Video Summarizer" ובחר PIN כדי להצמיד אותו
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q: מה זה Claude API ו-EmailJS?</div>
+          <div class="faq-answer">
+            <strong>Claude API:</strong> AI מ-Anthropic שמתרגם וסוכם סרטונים (בחינם! רק משלם בשימוש - ~$0.10 לסרטון)
+            <br><br>
+            <strong>EmailJS:</strong> שרות שליחת מיילים בחינם (200 מיילים בחודש בחינם)
+            <br><br>
+            Setup Wizard יפתח בשבילך את כל הקישורים להרשמה!
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q: זה בטוח?</div>
+          <div class="faq-answer">
+            ✅ כן!
+            <br>• כל הקוד בן-קוד פתוח וזמין לביקורת
+            <br>• אין שרתים שלנו - הכל עובד בתוך הדפדפן שלך
+            <br>• האם ההוראות שלך לא תורמות לשוקי שלישיים
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q: האם זה עובד בכל הסרטונים?</div>
+          <div class="faq-answer">
+            <strong>עובד בנחמד:</strong> YouTube, Udemy, Coursera, Vimeo, Teachable, Thinkific
+            <br><br>
+            <strong>סרטונים עם כתוביות:</strong> כן
+            <br><br>
+            <strong>סרטונים ללא כתוביות:</strong> יש כפתור "תמלול ידני" שמשתמש בWeb Speech API
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">Q: כמה זה עולה?</div>
+          <div class="faq-answer">
+            <strong>בחינם!</strong>
+            <br>• התוסף עצמו: בחינם
+            <br>• Claude API: ~$0.10 לסרטון (משלם רק בשימוש)
+            <br>• EmailJS: בחינם (200 מיילים בחודש)
+            <br><br>
+            סה"כ: כ-50 סנט לחודש אם משתמשים בחמישה סרטונים
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="location.href='index.html'">← חזור לעמוד הבית</button>
+  </div>
+
+  <footer>
+    <p>© 2026 Video Summarizer. בנוי עם ❤️ למשתמשים כמוך</p>
+  </footer>
+</body>
+</html>
